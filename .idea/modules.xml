@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/MapZip_Client.iml" filepath="$PROJECT_DIR$/MapZip_Client.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/nmaps/nmaps.iml" filepath="$PROJECT_DIR$/nmaps/nmaps.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ss.iml" filepath="$PROJECT_DIR$/ss.iml" />
     </modules>
   </component>
 </project>

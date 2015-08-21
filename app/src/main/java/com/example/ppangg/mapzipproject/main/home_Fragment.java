@@ -1,14 +1,22 @@
 package com.example.ppangg.mapzipproject.main;
 
 import android.app.Fragment;
+import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
+import android.util.Log;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -30,7 +38,7 @@ public class home_Fragment extends Fragment implements View.OnClickListener{
     private UserData user;
 
     private TextView topstate; // user info
-    private View imageview; // map image
+    private ImageView imageview; // map image
     private TextView hashstate; // hashtag
     private String mapcurname=""; // 현재 지도 이름
     private String mapkindnum; // 현재 지도 속성 번호
@@ -39,6 +47,9 @@ public class home_Fragment extends Fragment implements View.OnClickListener{
     private ArrayList<String> sppinerList; // map name
     Spinner spinner;
     private int mapnum; // map num
+
+    public int realWidth; //ScreenSize width
+    public int realHeight;//ScreenSize height
 
     private Button mapsetting;
 
@@ -89,9 +100,47 @@ public class home_Fragment extends Fragment implements View.OnClickListener{
         }
     }
 
+    public void ScreenSize()
+    {
+        Display display = Context.getWindowManager().getDefaultDisplay();
+
+
+        if (Build.VERSION.SDK_INT >= 17){
+            //new pleasant way to get real metrics
+            DisplayMetrics realMetrics = new DisplayMetrics();
+            display.getRealMetrics(realMetrics);
+            realWidth = realMetrics.widthPixels;
+            realHeight = realMetrics.heightPixels;
+
+        } else if (Build.VERSION.SDK_INT >= 14) {
+            //reflection for this weird in-between time
+            try {
+                Method mGetRawH = Display.class.getMethod("getRawHeight");
+                Method mGetRawW = Display.class.getMethod("getRawWidth");
+                realWidth = (Integer) mGetRawW.invoke(display);
+                realHeight = (Integer) mGetRawH.invoke(display);
+            } catch (Exception e) {
+                //this may not be 100% accurate, but it's all we've got
+                realWidth = display.getWidth();
+                realHeight = display.getHeight();
+                Log.e("Display Info", "Couldn't use reflection to get the real display metrics.");
+            }
+
+        } else {
+            //This should be close, as lower API devices should not have window navigation bars
+            realWidth = display.getWidth();
+            realHeight = display.getHeight();
+        }
+
+
+
+
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+
 
         v = inflater.inflate(R.layout.fragment_home, container, false);
 
@@ -103,7 +152,7 @@ public class home_Fragment extends Fragment implements View.OnClickListener{
         user.inputTestnum();
         topstate.append(String.valueOf(user.getTestnum()));
 
-        imageview = (View) v.findViewById(R.id.mapimage);
+        imageview = (ImageView) v.findViewById(R.id.mapimage);
         hashstate = (TextView) v.findViewById(R.id.tagText);
         mapsetting = (Button) v.findViewById(R.id.mapsetting);
 
@@ -153,7 +202,7 @@ public class home_Fragment extends Fragment implements View.OnClickListener{
 
                     // category select (SEOUL)
                     if (Integer.parseInt(mapmeta.get("category").toString()) == SystemMain.SEOUL_MAP_NUM) {
-                        imageview.setBackgroundResource(R.drawable.seoul);
+                        imageview.setImageResource(R.drawable.yy);
                         seoulBtnVisibility("visible");
                         hashstate.setText(mapmeta.get("hash_tag").toString());
                     }
@@ -165,6 +214,7 @@ public class home_Fragment extends Fragment implements View.OnClickListener{
             public void onNothingSelected(AdapterView<?> parent) {
 
             }
+
         });
 
         // Seoul Btn onClick
@@ -198,14 +248,48 @@ public class home_Fragment extends Fragment implements View.OnClickListener{
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), map_setting.class);
-                intent.putExtra("mapcurname",mapcurname);
-                intent.putExtra("hashtag",hashstate.getText().toString());
-                intent.putExtra("mapkindnum",mapkindnum);
-                intent.putExtra("mapid",mapid);
+                intent.putExtra("mapcurname", mapcurname);
+                intent.putExtra("hashtag", hashstate.getText().toString());
+                intent.putExtra("mapkindnum", mapkindnum);
+                intent.putExtra("mapid", mapid);
                 startActivity(intent);
             }
         });
 
+        imageview.post(new Runnable() {
+
+
+            @Override
+            public void run() {
+
+                int[] location = new int[2];
+                imageview.getLocationOnScreen(location);
+
+
+                RelativeLayout.LayoutParams layoutParms = new RelativeLayout.LayoutParams(90, 50); // width, height
+                layoutParms.setMargins((location[0]),
+                        (location[1]), 0, 0); // left, top, 0, 0
+                RelativeLayout.LayoutParams layoutParms2 = new RelativeLayout.LayoutParams(90, 50); // width, height
+                layoutParms2.setMargins((location[0]+imageview.getWidth()-100),
+                        (location[1])  , 0, 0); // left, top, 0, 0
+                RelativeLayout.LayoutParams layoutParms3 = new RelativeLayout.LayoutParams(90, 50); // width, height
+                layoutParms3.setMargins((location[0]+imageview.getWidth()-100),
+                        (imageview.getHeight())  , 0, 0); // left, top, 0, 0
+                RelativeLayout.LayoutParams layoutParms4 = new RelativeLayout.LayoutParams(90, 50); // width, height
+                layoutParms4.setMargins((location[0]),
+                        (location[1]+imageview.getHeight())  , 0, 0); // left, top, 0, 0
+             //   RelativeLayout.LayoutParams layoutParms5 = new RelativeLayout.LayoutParams(90, 50); // width, height
+              //  layoutParms5.setMargins((location[0]+(imageview.getHeight()/2)-60),
+              //          (location[1]+(imageview.getHeight()/2)+10)  , 0, 0); // left, top, 0, 0
+                GangNam.setLayoutParams(layoutParms);
+                DoBong.setLayoutParams(layoutParms2);
+                SeoCho.setLayoutParams(layoutParms3);
+                SongPa.setLayoutParams(layoutParms4);
+              //  SungBuk.setLayoutParams(layoutParms5);
+                Log.e("owl", "" +imageview.getHeight());
+
+            }
+        });
         return v;
     }
 
@@ -386,6 +470,17 @@ public class home_Fragment extends Fragment implements View.OnClickListener{
         intent.putExtra("LNG", loc_LNG);
         intent.putExtra("LAT", loc_LAT);
         startActivity(intent);
+
+    }
+    public static float convertPixelsToDp(float px){
+        DisplayMetrics metrics = Resources.getSystem().getDisplayMetrics();
+        float dp = px / (metrics.densityDpi / 160f);
+        return Math.round(dp);
     }
 
+    public static float convertDpToPixel(float dp){
+        DisplayMetrics metrics = Resources.getSystem().getDisplayMetrics();
+        float px = dp * (metrics.densityDpi / 160f);
+        return Math.round(px);
+    }
 }

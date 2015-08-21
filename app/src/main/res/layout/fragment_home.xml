@@ -30,7 +30,8 @@
         android:layout_below="@+id/topstate"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
-        android:text="지도 선택: " />
+        android:text="지도 선택: "
+        android:textSize="15dp"/>
 
     <Spinner
         android:id="@+id/spinner"
@@ -46,17 +47,14 @@
     <ImageView
         android:id="@+id/mapimage"
         android:layout_width="match_parent"
-        android:layout_height="350dp"
-        android:layout_below="@+id/spinner"
-        android:layout_marginTop="5dp" />
+        android:layout_height="match_parent"
+        android:layout_above="@+id/tagText"
+        android:layout_below="@+id/spinner" />
 
     <TextView
         android:id="@+id/tagText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/mapimage"
-        android:layout_marginLeft="5dp"
-        android:layout_marginTop="15dp"
         android:background="@color/mainOrange"
         android:gravity="center"
         android:paddingBottom="5dp"
@@ -65,18 +63,13 @@
         android:paddingRight="10dp"
         android:text="#해쉬#태그#다섯\n#개다#그렇다"
         android:textSize="15dp"
-        android:singleLine="false"/>
+        android:singleLine="false"
+        android:layout_marginBottom="140px"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/spinner"
+        android:layout_alignEnd="@+id/spinner" />
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_below="@+id/spinner">
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
         <Button
             android:id="@+id/DoBong"
             android:layout_width="wrap_content"
@@ -112,12 +105,8 @@
             android:text="성북구"
             android:textSize="10dp"
             android:visibility="gone" />
-        </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+
         <Button
             android:id="@+id/ZongRang"
             android:layout_width="wrap_content"
@@ -153,12 +142,7 @@
             android:text="동대문구"
             android:textSize="10dp"
             android:visibility="gone" />
-    </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
         <Button
             android:id="@+id/SuDaeMon"
             android:layout_width="wrap_content"
@@ -194,12 +178,7 @@
             android:text="광진구"
             android:textSize="10dp"
             android:visibility="gone" />
-    </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
         <Button
             android:id="@+id/GangDong"
             android:layout_width="wrap_content"
@@ -235,12 +214,6 @@
             android:text="강서구"
             android:textSize="10dp"
             android:visibility="gone" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
 
         <Button
             android:id="@+id/YangChen"
@@ -277,12 +250,7 @@
             android:text="동작구"
             android:textSize="10dp"
             android:visibility="gone" />
-    </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
 
         <Button
             android:id="@+id/GemChun"
@@ -328,8 +296,7 @@
             android:text="송파구"
             android:textSize="10dp"
             android:visibility="gone" />
-    </LinearLayout>
-    </LinearLayout>
+
 
 
 </RelativeLayout>
