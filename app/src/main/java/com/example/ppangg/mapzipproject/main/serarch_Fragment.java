@@ -39,6 +39,7 @@ public class serarch_Fragment extends Fragment implements AbsListView.OnScrollLi
     public void onCreate(Bundle savedInstanceState) {
         // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
+
     }
 
     @Override

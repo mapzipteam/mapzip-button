@@ -4,6 +4,7 @@ import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -30,12 +31,16 @@ import com.example.ppangg.mapzipproject.map.Location;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 
 public class home_Fragment extends Fragment implements View.OnClickListener{
 
     private View v;
     private UserData user;
+
+    private View 	decorView; //full Screen
+    private int	uiOption;
 
     private TextView topstate; // user info
     private ImageView imageview; // map image
@@ -98,11 +103,24 @@ public class home_Fragment extends Fragment implements View.OnClickListener{
         }catch (JSONException ex){
 
         }
+        //상단바&소프트바 삭제(1회성. 하번 클릭하면 다시생김)
+        /*
+        decorView = getActivity().getWindow().getDecorView();
+        uiOption = getActivity().getWindow().getDecorView().getSystemUiVisibility();
+        if( Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH )
+            uiOption |= View.SYSTEM_UI_FLAG_HIDE_NAVIGATION;
+        if( Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN )
+            uiOption |= View.SYSTEM_UI_FLAG_FULLSCREEN;
+        if( Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT )
+            uiOption |= View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY;
+
+        decorView.setSystemUiVisibility( uiOption );
+        */
     }
 
     public void ScreenSize()
     {
-        Display display = Context.getWindowManager().getDefaultDisplay();
+        Display display = getActivity().getWindowManager().getDefaultDisplay();
 
 
         if (Build.VERSION.SDK_INT >= 17){
@@ -130,6 +148,7 @@ public class home_Fragment extends Fragment implements View.OnClickListener{
             //This should be close, as lower API devices should not have window navigation bars
             realWidth = display.getWidth();
             realHeight = display.getHeight();
+
         }
 
 
@@ -194,6 +213,13 @@ public class home_Fragment extends Fragment implements View.OnClickListener{
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 try {
+                    RelativeLayout.LayoutParams imageLayout = new RelativeLayout.LayoutParams(realWidth, realHeight/5*3); // width, height
+                    imageLayout.setMargins(0, realHeight / 6, 0, 0);
+                    imageview.setLayoutParams(imageLayout);
+                    RelativeLayout.LayoutParams tagLayout = new RelativeLayout.LayoutParams(realWidth, realHeight/18);// width, height
+                    tagLayout.setMargins(0,(int)realHeight/24*19,0,0);
+                    hashstate.setLayoutParams(tagLayout);
+
                     JSONObject mapmeta = null;
                     mapmeta = user.getMapmetaArray().getJSONObject(position);
                     mapcurname = sppinerList.get(position);
@@ -202,7 +228,7 @@ public class home_Fragment extends Fragment implements View.OnClickListener{
 
                     // category select (SEOUL)
                     if (Integer.parseInt(mapmeta.get("category").toString()) == SystemMain.SEOUL_MAP_NUM) {
-                        imageview.setImageResource(R.drawable.yy);
+                        imageview.setImageResource(R.drawable.seoul2);
                         seoulBtnVisibility("visible");
                         hashstate.setText(mapmeta.get("hash_tag").toString());
                     }
@@ -265,26 +291,23 @@ public class home_Fragment extends Fragment implements View.OnClickListener{
                 int[] location = new int[2];
                 imageview.getLocationOnScreen(location);
 
-
+                ScreenSize();
+                Log.e("Display size : ", "" + realWidth);
+                Log.e("Display size : ", "" + realHeight);
                 RelativeLayout.LayoutParams layoutParms = new RelativeLayout.LayoutParams(90, 50); // width, height
-                layoutParms.setMargins((location[0]),
-                        (location[1]), 0, 0); // left, top, 0, 0
+                layoutParms.setMargins((realWidth/10*8),
+                        realHeight/10*6, 0, 0); // left, top, 0, 0
                 RelativeLayout.LayoutParams layoutParms2 = new RelativeLayout.LayoutParams(90, 50); // width, height
                 layoutParms2.setMargins((location[0]+imageview.getWidth()-100),
                         (location[1])  , 0, 0); // left, top, 0, 0
                 RelativeLayout.LayoutParams layoutParms3 = new RelativeLayout.LayoutParams(90, 50); // width, height
                 layoutParms3.setMargins((location[0]+imageview.getWidth()-100),
                         (imageview.getHeight())  , 0, 0); // left, top, 0, 0
-                RelativeLayout.LayoutParams layoutParms4 = new RelativeLayout.LayoutParams(90, 50); // width, height
-                layoutParms4.setMargins((location[0]),
-                        (location[1]+imageview.getHeight())  , 0, 0); // left, top, 0, 0
-             //   RelativeLayout.LayoutParams layoutParms5 = new RelativeLayout.LayoutParams(90, 50); // width, height
-              //  layoutParms5.setMargins((location[0]+(imageview.getHeight()/2)-60),
-              //          (location[1]+(imageview.getHeight()/2)+10)  , 0, 0); // left, top, 0, 0
+
                 GangNam.setLayoutParams(layoutParms);
                 DoBong.setLayoutParams(layoutParms2);
                 SeoCho.setLayoutParams(layoutParms3);
-                SongPa.setLayoutParams(layoutParms4);
+
               //  SungBuk.setLayoutParams(layoutParms5);
                 Log.e("owl", "" +imageview.getHeight());
 

@@ -42,14 +42,13 @@
         android:paddingBottom="5dp"
         android:layout_marginRight="5dp"
         android:layout_marginTop="5dp"
-        android:layout_toRightOf="@+id/mapstate" />
+        android:layout_toRightOf="@+id/mapstate"
+    />
 
     <ImageView
         android:id="@+id/mapimage"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@+id/tagText"
-        android:layout_below="@+id/spinner" />
+        android:layout_height="match_parent" />
 
     <TextView
         android:id="@+id/tagText"
@@ -64,7 +63,6 @@
         android:text="#해쉬#태그#다섯\n#개다#그렇다"
         android:textSize="15dp"
         android:singleLine="false"
-        android:layout_marginBottom="140px"
         android:layout_alignParentBottom="true"
         android:layout_alignRight="@+id/spinner"
         android:layout_alignEnd="@+id/spinner" />
