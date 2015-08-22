@@ -295,18 +295,15 @@ public class home_Fragment extends Fragment implements View.OnClickListener{
                 Log.e("Display size : ", "" + realWidth);
                 Log.e("Display size : ", "" + realHeight);
                 RelativeLayout.LayoutParams layoutParms = new RelativeLayout.LayoutParams(90, 50); // width, height
-                layoutParms.setMargins((realWidth/10*8),
-                        realHeight/10*6, 0, 0); // left, top, 0, 0
+                layoutParms.setMargins((realWidth/10*6), realHeight/30*17, 0, 0); // left, top, 0, 0
                 RelativeLayout.LayoutParams layoutParms2 = new RelativeLayout.LayoutParams(90, 50); // width, height
-                layoutParms2.setMargins((location[0]+imageview.getWidth()-100),
-                        (location[1])  , 0, 0); // left, top, 0, 0
+                layoutParms2.setMargins(realWidth/22*13, realHeight/4 , 0, 0); // left, top, 0, 0
                 RelativeLayout.LayoutParams layoutParms3 = new RelativeLayout.LayoutParams(90, 50); // width, height
-                layoutParms3.setMargins((location[0]+imageview.getWidth()-100),
-                        (imageview.getHeight())  , 0, 0); // left, top, 0, 0
+                layoutParms3.setMargins(realWidth/10, realHeight/15*7, 0, 0); // left, top, 0, 0
 
                 GangNam.setLayoutParams(layoutParms);
                 DoBong.setLayoutParams(layoutParms2);
-                SeoCho.setLayoutParams(layoutParms3);
+                GangSue.setLayoutParams(layoutParms3);
 
               //  SungBuk.setLayoutParams(layoutParms5);
                 Log.e("owl", "" +imageview.getHeight());
