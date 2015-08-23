@@ -13,6 +13,7 @@
         android:paddingLeft="5dp"
         android:paddingTop="10dp"
         android:text="사용자(ididid)"
+        android:typeface="monospace"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <Button

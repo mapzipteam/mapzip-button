@@ -12,6 +12,7 @@ import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -93,7 +94,6 @@ public class home_Fragment extends Fragment implements View.OnClickListener{
         // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
         user = UserData.getInstance();
-
         mapnum = user.getMapmetaArray().length();
         sppinerList = new ArrayList<String>();
         try {
@@ -104,7 +104,7 @@ public class home_Fragment extends Fragment implements View.OnClickListener{
 
         }
         //상단바&소프트바 삭제(1회성. 하번 클릭하면 다시생김)
-        /*
+/*
         decorView = getActivity().getWindow().getDecorView();
         uiOption = getActivity().getWindow().getDecorView().getSystemUiVisibility();
         if( Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH )
@@ -115,7 +115,7 @@ public class home_Fragment extends Fragment implements View.OnClickListener{
             uiOption |= View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY;
 
         decorView.setSystemUiVisibility( uiOption );
-        */
+*/
     }
 
     public void ScreenSize()
@@ -294,16 +294,57 @@ public class home_Fragment extends Fragment implements View.OnClickListener{
                 ScreenSize();
                 Log.e("Display size : ", "" + realWidth);
                 Log.e("Display size : ", "" + realHeight);
-                RelativeLayout.LayoutParams layoutParms = new RelativeLayout.LayoutParams(90, 50); // width, height
-                layoutParms.setMargins((realWidth/10*6), realHeight/30*17, 0, 0); // left, top, 0, 0
-                RelativeLayout.LayoutParams layoutParms2 = new RelativeLayout.LayoutParams(90, 50); // width, height
-                layoutParms2.setMargins(realWidth/22*13, realHeight/4 , 0, 0); // left, top, 0, 0
-                RelativeLayout.LayoutParams layoutParms3 = new RelativeLayout.LayoutParams(90, 50); // width, height
-                layoutParms3.setMargins(realWidth/10, realHeight/15*7, 0, 0); // left, top, 0, 0
+                Log.e("check brand", "BRAND = " + Build.BRAND);
+                if(Build.BRAND.equals("lge"))
+                    Log.e("check","ok");
+                else
+                Log.e("check","No");
 
-                GangNam.setLayoutParams(layoutParms);
-                DoBong.setLayoutParams(layoutParms2);
-                GangSue.setLayoutParams(layoutParms3);
+                RelativeLayout.LayoutParams layoutParms1 = new RelativeLayout.LayoutParams(90, 50); // width, height
+                layoutParms1.setMargins((realWidth / 100 * 33), realHeight / 100 * 36, 0, 0); // left, top, 0, 0
+                EunPhung.setLayoutParams(layoutParms1);
+                RelativeLayout.LayoutParams layoutParms2 = new RelativeLayout.LayoutParams(90, 50); // width, height
+                layoutParms2.setMargins(realWidth / 100 * 34, realHeight / 100 * 45, 0, 0); // left, top, 0, 0
+                SuDaeMon.setLayoutParams(layoutParms2);
+                RelativeLayout.LayoutParams layoutParms3 = new RelativeLayout.LayoutParams(90, 50); // width, height
+                layoutParms3.setMargins(realWidth/100*45, realHeight/100*43, 0, 0); // left, top, 0, 0
+                ZongRo.setLayoutParams(layoutParms3);
+                RelativeLayout.LayoutParams layoutParms4 = new RelativeLayout.LayoutParams(90, 50); // width, height
+                layoutParms4.setMargins(realWidth/100*54, realHeight/100*40, 0, 0); // left, top, 0, 0
+                SungBuk.setLayoutParams(layoutParms4);
+                RelativeLayout.LayoutParams layoutParms5 = new RelativeLayout.LayoutParams(90, 50); // width, height
+                layoutParms5.setMargins(realWidth/100*52, realHeight/100*32, 0, 0); // left, top, 0, 0
+                GangBuk.setLayoutParams(layoutParms5);
+
+                RelativeLayout.LayoutParams layoutParms6 = new RelativeLayout.LayoutParams(90, 50); // width, height
+                layoutParms6.setMargins(realWidth / 100 * 58, realHeight / 100 * 27, 0, 0); // left, top, 0, 0
+                DoBong.setLayoutParams(layoutParms6);
+                RelativeLayout.LayoutParams layoutParms7 = new RelativeLayout.LayoutParams(90, 50); // width, height
+                layoutParms7.setMargins(realWidth/100*68, realHeight/100*33, 0, 0); // left, top, 0, 0
+                NoWon.setLayoutParams(layoutParms7);
+                RelativeLayout.LayoutParams layoutParms8 = new RelativeLayout.LayoutParams(90, 50); // width, height
+                layoutParms8.setMargins(realWidth/100*72, realHeight/100*40, 0, 0); // left, top, 0, 0
+                ZongRang.setLayoutParams(layoutParms8);
+                RelativeLayout.LayoutParams layoutParms9 = new RelativeLayout.LayoutParams(90, 50); // width, height
+                layoutParms9.setMargins(realWidth/100*62, realHeight/100*44, 0, 0); // left, top, 0, 0
+                DongDaeMon.setLayoutParams(layoutParms9);
+                RelativeLayout.LayoutParams layoutParms10 = new RelativeLayout.LayoutParams(90, 50); // width, height
+                layoutParms10.setMargins(realWidth/100*9, realHeight/100*47, 0, 0); // left, top, 0, 0
+                GangSue.setLayoutParams(layoutParms10);
+
+
+
+
+                RelativeLayout.LayoutParams layoutParms14 = new RelativeLayout.LayoutParams(90, 50); // width, height
+                layoutParms14.setMargins(realWidth/100*29, realHeight/100*49 , 0, 0); // left, top, 0, 0
+                MaPho.setLayoutParams(layoutParms14);
+                RelativeLayout.LayoutParams layoutParms17 = new RelativeLayout.LayoutParams(90, 50); // width, height
+                layoutParms17.setMargins((realWidth / 100 * 39), realHeight / 30 * 17, 0, 0); // left, top, 0, 0
+                DongJack.setLayoutParams(layoutParms17);
+                RelativeLayout.LayoutParams layoutParms22 = new RelativeLayout.LayoutParams(90, 50); // width, height
+                layoutParms22.setMargins((realWidth / 10 * 6), realHeight / 30 * 17, 0, 0); // left, top, 0, 0
+                GangNam.setLayoutParams(layoutParms22);
+
 
               //  SungBuk.setLayoutParams(layoutParms5);
                 Log.e("owl", "" +imageview.getHeight());
