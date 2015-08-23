@@ -6,12 +6,12 @@
         <!-- Customize your theme here. -->
     </style>
 
-        <style name="AppBaseTheme" parent="android:Theme.Holo.Light">
-            <item name="android:typeface">sans</item>
+        <style name="AppBaseTheme" parent="Theme.AppCompat.Light.DarkActionBar" >
+            <item name="android:typeface">serif</item>
         </style>
 
-        <style name="AppTheme.DialogWhenLarge" parent="@android:style/Theme.Holo.Light.DialogWhenLarge">
-            <item name="android:typeface">sans</item>
+        <style name="AppBaseTheme.DialogWhenLarge" parent="@android:style/Theme.Holo.Light.DialogWhenLarge">
+            <item name="android:typeface">serif</item>
         </style>
 
 </resources>

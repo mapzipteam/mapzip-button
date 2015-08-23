@@ -29,6 +29,8 @@ public class serarch_Fragment extends Fragment implements AbsListView.OnScrollLi
     private ListView mListView;
     private MyItem 			  items;
 
+    //
+    //
     // 스크롤 로딩
     private LayoutInflater mInflater;
     private boolean mLockListView;

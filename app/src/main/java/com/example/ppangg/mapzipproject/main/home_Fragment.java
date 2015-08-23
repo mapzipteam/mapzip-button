@@ -332,18 +332,53 @@ public class home_Fragment extends Fragment implements View.OnClickListener{
                 layoutParms10.setMargins(realWidth/100*9, realHeight/100*47, 0, 0); // left, top, 0, 0
                 GangSue.setLayoutParams(layoutParms10);
 
-
-
-
+                RelativeLayout.LayoutParams layoutParms11 = new RelativeLayout.LayoutParams(90, 50); // width, height
+                layoutParms11.setMargins(realWidth/100*17, realHeight/100*56 , 0, 0); // left, top, 0, 0
+                YangChen.setLayoutParams(layoutParms11);
+                RelativeLayout.LayoutParams layoutParms12 = new RelativeLayout.LayoutParams(90, 50); // width, height
+                layoutParms12.setMargins(realWidth/100*13, realHeight/100*62 , 0, 0); // left, top, 0, 0
+                GuRo.setLayoutParams(layoutParms12);
+                RelativeLayout.LayoutParams layoutParms13 = new RelativeLayout.LayoutParams(90, 50); // width, height
+                layoutParms13.setMargins(realWidth/100*26, realHeight/100*68 , 0, 0); // left, top, 0, 0
+                GemChun.setLayoutParams(layoutParms13);
                 RelativeLayout.LayoutParams layoutParms14 = new RelativeLayout.LayoutParams(90, 50); // width, height
                 layoutParms14.setMargins(realWidth/100*29, realHeight/100*49 , 0, 0); // left, top, 0, 0
                 MaPho.setLayoutParams(layoutParms14);
+                RelativeLayout.LayoutParams layoutParms15 = new RelativeLayout.LayoutParams(90, 50); // width, height
+                layoutParms15.setMargins(realWidth/100*29, realHeight/100*56 , 0, 0); // left, top, 0, 0
+                YongDengPo.setLayoutParams(layoutParms15);
+
+                RelativeLayout.LayoutParams layoutParms16 = new RelativeLayout.LayoutParams(90, 50); // width, height
+                layoutParms16.setMargins(realWidth/100*37, realHeight/100*67 , 0, 0); // left, top, 0, 0
+                GanAk.setLayoutParams(layoutParms16);
                 RelativeLayout.LayoutParams layoutParms17 = new RelativeLayout.LayoutParams(90, 50); // width, height
                 layoutParms17.setMargins((realWidth / 100 * 39), realHeight / 30 * 17, 0, 0); // left, top, 0, 0
                 DongJack.setLayoutParams(layoutParms17);
+                RelativeLayout.LayoutParams layoutParms18 = new RelativeLayout.LayoutParams(90, 50); // width, height
+                layoutParms18.setMargins(realWidth/100*45, realHeight/100*53 , 0, 0); // left, top, 0, 0
+                YongSan.setLayoutParams(layoutParms18);
+                RelativeLayout.LayoutParams layoutParms19 = new RelativeLayout.LayoutParams(90, 50); // width, height
+                layoutParms19.setMargins(realWidth/100*49, realHeight/100*48 , 0, 0); // left, top, 0, 0
+                Zhong.setLayoutParams(layoutParms19);
+                RelativeLayout.LayoutParams layoutParms20 = new RelativeLayout.LayoutParams(90, 50); // width, height
+                layoutParms20.setMargins(realWidth/100*60, realHeight/100*50 , 0, 0); // left, top, 0, 0
+                SungDong.setLayoutParams(layoutParms20);
+
+                RelativeLayout.LayoutParams layoutParms21 = new RelativeLayout.LayoutParams(90, 50); // width, height
+                layoutParms21.setMargins(realWidth / 100 * 53, realHeight / 100 * 64, 0, 0); // left, top, 0, 0
+                SeoCho.setLayoutParams(layoutParms21);
                 RelativeLayout.LayoutParams layoutParms22 = new RelativeLayout.LayoutParams(90, 50); // width, height
-                layoutParms22.setMargins((realWidth / 10 * 6), realHeight / 30 * 17, 0, 0); // left, top, 0, 0
+                layoutParms22.setMargins(realWidth / 10 * 6, realHeight / 30 * 17, 0, 0); // left, top, 0, 0
                 GangNam.setLayoutParams(layoutParms22);
+                RelativeLayout.LayoutParams layoutParms23 = new RelativeLayout.LayoutParams(90, 50); // width, height
+                layoutParms23.setMargins(realWidth / 100 * 70, realHeight / 100 * 51, 0, 0); // left, top, 0, 0
+                GangZin.setLayoutParams(layoutParms23);
+                RelativeLayout.LayoutParams layoutParms24 = new RelativeLayout.LayoutParams(90, 50); // width, height
+                layoutParms24.setMargins(realWidth / 100 * 75, realHeight / 100 * 58, 0, 0); // left, top, 0, 0
+                SongPa.setLayoutParams(layoutParms24);
+                RelativeLayout.LayoutParams layoutParms25 = new RelativeLayout.LayoutParams(90, 50); // width, height
+                layoutParms25.setMargins(realWidth / 100 *83, realHeight / 100 * 49, 0, 0); // left, top, 0, 0
+                GangDong.setLayoutParams(layoutParms25);
 
 
               //  SungBuk.setLayoutParams(layoutParms5);
